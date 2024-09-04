@@ -22,5 +22,9 @@ curl -v localhost:8080/ready
 curl -v localhost:8080/healthy
 ```
 
+### docker image
+```bash
+docker pull alifattahi/k8s-webapp:latest
+```
 ####
 Ali Fattahi
