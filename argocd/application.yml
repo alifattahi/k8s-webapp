@@ -6,9 +6,9 @@ metadata:
 spec:
   project: webapp-project  
   source:
-    repoURL: 'https://github.com/alifattahi/k8s-webapp'  
+    repoURL: 'https://github.com/alifattahi/k8s-webapp.git'  
     targetRevision: HEAD
-    path: /helm/k8s-webapp
+    path: helm/k8s-webapp
     helm:
       valueFiles:
         - values.yaml
