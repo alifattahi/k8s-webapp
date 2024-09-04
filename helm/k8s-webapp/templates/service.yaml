@@ -9,6 +9,6 @@ spec:
   ports:
     - port: {{ .Values.service.port }}
       targetPort: 3000
-      nodePort: {{ .Values.service.nodePort | default (randInt 30000 32767) }}  # Optional: Assign a random node port if not specified
+#      nodePort: {{ .Values.service.nodePort | default (randInt 30000 32767) }}  # Optional: Assign a random node port if not specified
   selector:
     app: {{ include "k8s-webapp.name" . }}
