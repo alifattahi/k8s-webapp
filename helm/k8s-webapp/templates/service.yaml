@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "k8s-webapp.fullname" . }}
+  labels:
+    {{- include "k8s-webapp.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 3000
+      nodePort: {{ .Values.service.nodePort | default (randInt 30000 32767) }}  # Optional: Assign a random node port if not specified
+  selector:
+    app: {{ include "k8s-webapp.name" . }}

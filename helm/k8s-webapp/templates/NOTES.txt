@@ -1,0 +1,3 @@
+# templates/NOTES.txt
+
+Access your application through the service on port {{ .Values.service.port }}.

@@ -1,0 +1,8 @@
+resources:
+  - ../../base
+
+patchesStrategicMerge:
+  - patch-deployment.yaml
+
+components:
+  - hpa.yaml

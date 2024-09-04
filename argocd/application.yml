@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k8s-webapp
+  namespace: argocd
+spec:
+  project: webapp-project  
+  source:
+    repoURL: 'https://github.com/alifattahi/k8s-webapp'  
+    targetRevision: HEAD
+    path: helm/k8s-webapp
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: webapp
+  syncPolicy:
+    automated:
+      prune: true 
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
