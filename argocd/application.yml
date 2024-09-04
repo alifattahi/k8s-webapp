@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/alifattahi/k8s-webapp'  
     targetRevision: HEAD
-    path: helm/k8s-webapp
+    path: /helm/k8s-webapp
     helm:
       valueFiles:
         - values.yaml
