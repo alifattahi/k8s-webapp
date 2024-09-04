@@ -42,17 +42,27 @@ func main() {
 
 	// liveness
 	app.Get("/healthy", func(c fiber.Ctx) error {
-		c.Status(fiber.StatusOK)
-		return c.SendString("Yes, I'm Healthy!")
+		isAlive := true 
+        if isAlive {
+            c.Status(fiber.StatusOK)
+            return c.SendString("Liveness check passed!")
+        } else {
+            c.Status(fiber.StatusInternalServerError)
+            return c.SendString("Liveness check failed!")
+        }
 	})
 
 	// is ready to serve traffic ?
 	// in this method we can check connections to database and messege brokers etc...
 	app.Get("/ready", func(c fiber.Ctx) error {
-		// for test only:
-		// c.Status(fiber.StatusInternalServerError)
-		c.Status(fiber.StatusOK)
-		return c.SendString("Yes I'm ready to serve traffic")
+		isReady := true 
+        if isReady {
+            c.Status(fiber.StatusOK)
+            return c.SendString("Readiness check passed!")
+        } else {
+            c.Status(fiber.StatusServiceUnavailable)
+            return c.SendString("Readiness check failed!")
+        }
 	})
 
 	// Start the server on port 3000
